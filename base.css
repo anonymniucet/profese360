@@ -1,0 +1,60 @@
+/* ═══════════════════════════════════════════════════════════════
+   PROFESE360 · base.css
+   Reset, typografie, sdílené prvky, tlačítka, přechody
+   ═══════════════════════════════════════════════════════════════ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* Dokument — značka má pevnou paletu, proto jeden světelný režim (kap. 2.2:
+   jednotný vizuální systém napříč profesemi). */
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+[hidden]{display:none!important}
+img,svg{max-width:100%}
+
+html{background:var(--cream);}
+body{margin:0;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.6;overflow-x:hidden;}
+
+/* ── Sdílené ── */
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);}
+.narrow{max-width:680px;margin-inline:auto;padding-inline:var(--gut);}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lo);display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex:none;}
+.eyebrow.on-dark{color:var(--gold-hi);}
+h1,h2,h3{letter-spacing:-.025em;line-height:1.1;text-wrap:balance;font-weight:800;}
+.h2{font-size:clamp(27px,4.2vw,42px);}
+.lede{font-size:clamp(15.5px,1.6vw,18px);line-height:1.65;color:var(--muted);max-width:56ch;}
+.lede.on-dark{color:var(--on-dark-2);}
+section{scroll-margin-top:76px;}
+.ruler{height:9px;background-image:repeating-linear-gradient(to right,var(--tick,rgba(28,36,33,.22)) 0 1px,transparent 1px 11px);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);}
+.ruler.on-dark{--tick:rgba(232,228,214,.26);}
+
+/* ── Tlačítka ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:inherit;font-weight:800;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:17px 26px;border-radius:var(--rs);border:1.5px solid transparent;cursor:pointer;min-height:54px;text-align:center;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .14s ease;}
+.btn:focus-visible{outline:2.5px solid var(--gold-hi);outline-offset:3px;}
+.btn svg{width:15px;height:15px;flex:none;}
+.btn-p{background:var(--gold);color:var(--forest);border-color:var(--gold);}
+.btn-p:hover{background:var(--gold-hi);border-color:var(--gold-hi);transform:translateY(-2px);}
+.btn-p:disabled{background:rgba(28,36,33,.10);border-color:transparent;color:var(--muted);cursor:not-allowed;transform:none;}
+.btn-s{background:transparent;color:var(--on-dark);border-color:var(--bd-dark);}
+.btn-s:hover{border-color:var(--on-dark-3);background:rgba(232,228,214,.06);}
+.btn-s.light{color:var(--ink);border-color:var(--bd-light);}
+.btn-s.light:hover{border-color:rgba(28,36,33,.24);background:rgba(28,36,33,.03);}
+.btn-wide{width:100%;}
+
+/* ── Reveal + přechody ──
+   Prvky jsou v klidovém stavu VIDITELNÉ a při scrollnutí do záběru
+   se jemně vysunou. Nikdy nezůstanou skryté na opacity:0 — statický
+   náhled, sdílený odkaz i vypnutý JS ukazují celou stránku. */
+.js .rv.in{animation:riseIn .6s cubic-bezier(.33,1,.68,1) both;}
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.js .rv-1.in{animation-delay:.06s}.js .rv-2.in{animation-delay:.12s}.js .rv-3.in{animation-delay:.18s}
+.js .rv-4.in{animation-delay:.24s}.js .rv-5.in{animation-delay:.3s}
+.fade{animation:fade .3s cubic-bezier(.33,1,.68,1) both;}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion: reduce){
+  :root{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
+  .js .rv{opacity:1!important;transform:none!important;}
+  .calc-ring .f{animation:none;}
+}

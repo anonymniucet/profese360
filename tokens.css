@@ -1,0 +1,38 @@
+/* ═══════════════════════════════════════════════════════════════
+   PROFESE360 · tokens.css
+   Závazná paleta a designové proměnné (MASTER SPECIFICATION V2.0, kap. 2)
+   ═══════════════════════════════════════════════════════════════ */
+
+:root{
+  /* ── Závazná paleta (kap. 2) ── */
+  --dark:      #15372E;
+  --forest:    #0E2822;
+  --gold:      #C79A45;
+  --cream:     #F6F0E4;
+  --white:     #FFFFFF;
+  --ink:       #1C2421;
+  --muted:     #66716C;
+
+  /* ── Odvozené tóny ── */
+  --gold-hi:   #D9B269;
+  --gold-lo:   #A87D31;
+  --gold-pale: #EBCE8A;
+  --gold-dim:  #8A6F38;
+  --gold-tint: rgba(199,154,69,.10);
+  --grey-band: #55605B;
+  --on-dark:   #E8E4D6;
+  --on-dark-2: rgba(232,228,214,.62);
+  --on-dark-3: rgba(232,228,214,.34);
+  --bd-dark:   rgba(232,228,214,.13);
+  --bd-light:  rgba(28,36,33,.10);
+  --bd-hair:   rgba(28,36,33,.06);
+
+  --r:  12px;
+  --rs: 8px;
+  --gut: clamp(20px, 5vw, 64px);
+  --maxw: 1140px;
+
+  font-family:'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing:antialiased;
+  scroll-behavior:smooth;
+}
